@@ -39,3 +39,16 @@
 	height: 144px;
 	overflow: auto;
 }
+
+.container {
+	display: flex;               
+	justify-content: left;     
+	align-items: center;        
+	text-align: left;          
+	gap: 20px;  
+}
+
+#compass {
+	width: 100px;
+	height: 100px;
+}

@@ -5,7 +5,8 @@ import * as firebase from './park-viewer.js';
 
 // I. Variables & constants
 // NB - it's easy to get [longitude,latitude] coordinates with this tool: http://geojson.io/
-const lnglatNYS = [-75.71615970715911, 43.025810763917775];
+const lnglatAlaska = [-154.4931, 63.5888];
+const lnglatHawaii = [-155.844437, 19.741755];
 const lnglatUSA = [-98.5696, 39.8282];
 // let favoriteIds = ["p20","p79","p180","p43"];
 let favoriteIds = [];
@@ -16,17 +17,17 @@ let currentId = '';
 
 // Sets up the Map Control buttons, the favorite/delete buttons, and then calls other functions
 const setupUI = () => {
-  // NYS Zoom 5.2
+  // Alaska
   document.querySelector('#btn1').onclick = () => {
+    map.setZoomLevel(3.5);
+    map.setPitchAndBearing(0, 0);
+    map.flyTo(lnglatAlaska);
+  };
+  // Hawaii
+  document.querySelector('#btn2').onclick = () => {
     map.setZoomLevel(5.2);
     map.setPitchAndBearing(0, 0);
-    map.flyTo(lnglatNYS);
-  };
-  // NYS isometric view
-  document.querySelector('#btn2').onclick = () => {
-    map.setZoomLevel(5.5);
-    map.setPitchAndBearing(45, 0);
-    map.flyTo(lnglatNYS);
+    map.flyTo(lnglatHawaii);
   };
   // World zoom 0
   document.querySelector('#btn3').onclick = () => {
