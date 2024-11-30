@@ -35,7 +35,7 @@ const initMap = (center) => {
 
 	map = new mapboxgl.Map({
 		container: "map",
-		style: "mapbox://styles/mapbox/light-v11",
+		style: "mapbox://styles/mapbox/outdoors-v12",
 		center: center,
 		zoom: 5.2
 	});
@@ -56,6 +56,13 @@ const addMarker = (feature, className, clickHandler) => {
 	const el = document.createElement('div');
 	el.className = className;
 	el.id = feature.id;
+	// eslint-disable-next-line no-undef
+	el.style.backgroundImage = `url(../images/park-photos/${feature.id}.jpg)`;
+	el.style.backgroundSize = "cover";
+	el.style.width = "50px";
+	el.style.height = "50px";
+	el.style.borderRadius = "50%";
+
 
 	// B. This is the HTML for the Popup
 	const html = `
