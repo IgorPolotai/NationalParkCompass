@@ -69,6 +69,7 @@ const addMarker = (feature, className, clickHandler) => {
 	<b>${feature.properties.title}</b>
 	<p>${feature.properties.address}</p>
 	<p><b>Phone: </b>${feature.properties.phone}</p>
+	<p><b>Why Go: </b>${feature.properties.reason}</p>
 	`;
 
 	// C. Make the marker, add a popup, and add to map

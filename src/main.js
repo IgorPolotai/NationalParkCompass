@@ -151,7 +151,8 @@ const showFeatureDetails = (id) => {
 
 // Sets up the Mapbox and downloads geojson
 const init = () => {
-  map.initMap(lnglatNYS);
+  map.initMap(lnglatUSA);
+  map.setZoomLevel(3);
   ajax.downloadFile('data/parks.geojson', (str) => {
     geojson = JSON.parse(str);
     // console.log(geojson);
