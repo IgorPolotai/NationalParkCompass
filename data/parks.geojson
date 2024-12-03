@@ -402,6 +402,306 @@
 		  ],
 		  "type": "Point"
 		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "glacier",
+		"properties": {
+				  "title": "Glacier National Park",
+				  "subtitle": "Crown of the Continent",
+				  "description": "A showcase of melting glaciers, alpine meadows, carved valleys, and spectacular lakes. With over 700 miles of trails, Glacier is a paradise for adventurous visitors seeking a landscape steeped in human culture. Relive the days of old through historic chalets, lodges, and the famous Going-to-the-Sun Road.",
+				  "url": "https://www.nps.gov/glac",
+				  "address": "64 Grinnell Drive",
+				  "phone": "(406) 888 7800",
+				  "reason": "Overnight at Granite Park Chalet."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-136.900208,
+			58.665806
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "glacierBay",
+		"properties": {
+				  "title": "Glacier Bay National Park",
+				  "subtitle": "Southeast Alaskan Wilderness",
+				  "description": "Covering 3.3 million acres of rugged mountains, dynamic glaciers, temperate rainforest, wild coastlines and deep sheltered fjords, Glacier Bay National Park is a highlight of Alaska's Inside Passage and part of a 25-million acre World Heritage Site—one of the world’s largest international protected areas. From sea to summit, Glacier Bay offers limitless opportunities for adventure and inspiration.",
+				  "url": "https://www.nps.gov/glba",
+				  "address": "1 Park Road, Gustavus, AK 99826",
+				  "phone": "(907) 687 2230",
+				  "reason": "Visit fjordlands on cruise ships."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-136.900208,
+			58.665806
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "grandCanyon",
+		"properties": {
+				  "title": "Grand Canyon National Park",
+				  "subtitle": "Geologic Wonder and Ancestral Homeland",
+				  "description": "Entirely within the state of Arizona, the park encompasses 278 miles (447 km) of the Colorado River and adjacent uplands. Located on the ancestral homelands of 11 present day Tribal Communities, Grand Canyon is one of the most spectacular examples of erosion anywhere in the world—a mile deep canyon unmatched in the incomparable vistas it offers visitors from both north and south rims.",
+				  "url": "https://www.nps.gov/grca",
+				  "address": "20 South Entrance Road, Grand Canyon, AZ 86023",
+				  "phone": "(928) 638 7779",
+				  "reason": "Hike Rim-to-Rim."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-112.363808,
+			36.266033
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "grandTeton",
+		"properties": {
+				  "title": "Grand Teton National Park",
+				  "subtitle": "Mountains of the Imagination",
+				  "description": "Soaring over a landscape rich with wildlife, pristine lakes, and majestic alpine vistas, the Teton Range stands as a testament to generations of stewards. For over 11,000 years, communities have thrived in the valley known as Jackson Hole, turning these mountains into more than just peaks—they embody imagination and enduring human connection.",
+				  "url": "https://www.nps.gov/grte",
+				  "address": "103 Headquarters Loop, Moose, WY 83012",
+				  "phone": "(307) 739 3399",
+				  "reason": "Backpack the Teton Crest Trail."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-110.684944,
+			43.790802
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "greatBasin",
+		"properties": {
+				  "title": "Great Basin National Park",
+				  "subtitle": "From Caves to the Cosmos",
+				  "description": "From the 13,063-foot summit of Wheeler Peak to the sagebrush-covered foothills, Great Basin National Park hosts a sample of the incredible diversity of the larger Great Basin region. Come and partake of the solitude of the wilderness, walk among ancient bristlecone pines, bask in the darkest of night skies, and explore mysterious subterranean passages. There's a lot more than just desert here.",
+				  "url": "https://www.nps.gov/grba",
+				  "address": "Five miles west of Baker, NV 89311",
+				  "phone": "(775) 234 7331",
+				  "reason": "Hike the Bristlecone Crove and Glacier Trail."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-114.3000,
+			38.9833
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "greatSandDunes",
+		"properties": {
+				  "title": "Great Sand Dunes National Park",
+				  "subtitle": "Great Sand Dunes",
+				  "description": "Open 24/7 year round! There are no timed entries or reservations to visit. The tallest dunes in North America are the centerpiece in a diverse landscape of grasslands, wetlands, forests, alpine lakes, and tundra. Stay on a moonless night to experience countless stars in this International Dark Sky Park!",
+				  "url": "https://www.nps.gov/grsa",
+				  "address": "11999 State Highway 150, Mosca, CO 81146",
+				  "phone": "(719) 378 6385",
+				  "reason": "Climb the High Dune on First Ridge."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-105.6236,
+			37.7658
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "greatSmokeyMountains",
+		"properties": {
+				  "title": "Great Smokey Mountains National Park",
+				  "subtitle": "A Wondrous Diversity of Life",
+				  "description": "Ridge upon ridge of forest straddles the border between North Carolina and Tennessee in Great Smoky Mountains National Park. World renowned for its diversity of plant and animal life, the beauty of its ancient mountains, and the quality of its remnants of Southern Appalachian mountain culture, this is America's most visited national park. Plan your visit today!",
+				  "url": "https://www.nps.gov/grsm",
+				  "address": "107 Park Headquarters Road, Gatlinburg, TN 37738",
+				  "phone": "(865) 436 1200",
+				  "reason": "Bike Cades Coves on a Vehicle-Free Day."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-83.489548,
+			35.611763
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "guadalupeMountains",
+		"properties": {
+				  "title": "Guadalupe Mountains National Park",
+				  "subtitle": "Fink Your Peak",
+				  "description": "Come experience mountains and canyons, desert and dunes, night skies and spectacular vistas within a place unlike any other. Guadalupe Mountains National Park protects the world's most extensive Permian fossil reef, the four highest peaks in Texas, an environmentally diverse collection of flora and fauna, and the stories of lives shaped through conflict, cooperation and survival.",
+				  "url": "https://www.nps.gov/gumo",
+				  "address": "400 Pine Canyon, Salt Flat, TX 79847",
+				  "phone": "(915) 828 3251",
+				  "reason": "Summit Guadalupe Peak."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-104.8663,
+			31.9233
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "haleakalā",
+		"properties": {
+				  "title": "Haleakalā National Park",
+				  "subtitle": "A Rare and Sacred Landscape",
+				  "description": "This special place vibrates with stories of ancient and modern Hawaiian culture and protects the bond between the land and its people. The park also cares for endangered species, some of which exist nowhere else. Come visit this special place - renew your spirit amid stark volcanic landscapes and sub-tropical rain forest with an unforgettable hike through the backcountry.",
+				  "url": "https://www.nps.gov/hale",
+				  "address": "Eighteen miles southwest of Makawao, HI 96768",
+				  "phone": "(808) 572 4400",
+				  "reason": "Hike the Keonehe'ehe'e (Sliding Sands) Trail."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-156.173325,
+			20.701283
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "hawaiiVolcanoes",
+		"properties": {
+				  "title": "Hawai'i Volcanos National Park",
+				  "subtitle": "Born of Fire, Born of the Sea",
+				  "description": "Hawai‘i Volcanoes National Park protects some of the most unique geological, biological, and cherished cultural landscapes in the world. Extending from sea level to 13,680 feet, the park encompasses the summits of two of the world's most active volcanoes - Kīlauea and Mauna Loa - and is a designated International Biosphere Reserve and UNESCO World Heritage Site.",
+				  "url": "https://www.nps.gov/havo",
+				  "address": "1 Crater Rim Drive, Hawaii National Park, HI 96718",
+				  "phone": "(808) 985 6011",
+				  "reason": "Take the Circle of Fire helicopter tour."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-155.4662,
+			19.4964
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "hotSprings",
+		"properties": {
+				  "title": "Hot Springs National Park",
+				  "subtitle": "Where History and Nature Meet",
+				  "description": "Hot Springs National Park has a rich cultural past. The grand architecture of our historic bathhouses is equally matched by the natural curiosities that have been drawing people here for hundreds of years. Ancient thermal springs, mountain views, incredible geology, forested hikes, and abundant creeks – all in the middle of town – make Hot Springs National Park a unique and beautiful destination.",
+				  "url": "https://www.nps.gov/hosp",
+				  "address": "369 Central Avenue, Hot Springs, AR 71901",
+				  "phone": "(501) 620 6715",
+				  "reason": "Soak in mineral water."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-94.042267,
+			34.521530
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "indianaDunes",
+		"properties": {
+				  "title": "Indiana Dunes National Park",
+				  "subtitle": "Finding Sand and Solitude",
+				  "description": "Lake Michigan's might has influenced Indiana Dunes for millennia. Wind and waves have shaped the land, leaving a rich mosaic of habitats along these 15 miles of Indiana coast. Over 50 miles of trails lead through shifting sand dunes, quiet woodlands, sunny prairies and lush wetlands. Known for its striking plant and bird diversity, it's easy to find inspiration throughout the park’s 15,000 acres.",
+				  "url": "https://www.nps.gov/indu",
+				  "address": "1215 IN-49, Porter, IN 46304",
+				  "phone": "(219) 395 1882",
+				  "reason": "Hike the Cowles Bog Trail."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-87.053762,
+			41.633349
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "isleRoyale",
+		"properties": {
+				  "title": "Isle Royale National Park",
+				  "subtitle": "Your Invitation to a Superior Wilderness",
+				  "description": "Explore a rugged, isolated island far from our connected communities. Isle Royale offers adventures for backpackers, hikers, boaters, paddlers, and divers. Cross Lake Superior and make a commitment: Become a part of this island, and let it become a part of you. Find peace and refuge in island wilderness – because Isle Royale, in turn, finds refuge in us. Help Isle Royale stay wild.",
+				  "url": "https://www.nps.gov/isro",
+				  "address": "800 East Lakeshore Drive, Houghton, MI 49931",
+				  "phone": "(906) 482 0984",
+				  "reason": "Backpack the Greenstone Ridge Trail"
+			  },
+		"geometry": {
+		  "coordinates": [
+			-88.9093,
+			47.9959
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "joshuaTree",
+		"properties": {
+				  "title": "Joshua Tree National Park",
+				  "subtitle": "Where Two Deserts Meet",
+				  "description": "Two distinct desert ecosystems, the Mojave and the Colorado, come together in Joshua Tree National Park. A fascinating variety of plants and animals make their homes in a land sculpted by strong winds and occasional torrents of rain. Dark night skies, a rich cultural history, and surreal geologic features add to the wonder of this vast wilderness in southern California. Come explore for yourself!",
+				  "url": "https://www.nps.gov/jotr",
+				  "address": "74485 National Park Drive, Twentynine Palms, CA 992277",
+				  "phone": "(760) 367 5500",
+				  "reason": "Rock climb monzogranite mounds."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-115.900650,
+			33.881866
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "katmai",
+		"properties": {
+				  "title": "Katmai National Park",
+				  "subtitle": "Welcome to Katmai Country",
+				  "description": "A landscape is alive underneath our feet, filled with creatures that remind us what it is to be wild. Katmai was established in 1918 to protect the volcanically devastated region surrounding Novarupta and the Valley of Ten Thousand Smokes. Today, Katmai National Park and Preserve also protects 9,000 years of human history and important habitat for salmon and thousands of brown bears.",
+				  "url": "https://www.nps.gov/katm",
+				  "address": "1000 Silver Street, King Salmon, AK 99613",
+				  "phone": "(907) 246 3305",
+				  "reason": "See bears at Brooks Falls."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-154.693756,
+			58.597813
+		  ],
+		  "type": "Point"
+		}
 	  }
   ]
 }

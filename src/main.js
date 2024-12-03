@@ -57,7 +57,6 @@ const setupUI = () => {
   };
 
   loadFavorites();
-  refreshFavorites();
   updateButtons(currentId);
 };
 
@@ -79,6 +78,9 @@ const refreshFavorites = () => {
 // Formats the list for the favorited parks
 const createFavoriteElement = (id) => {
   const feature = getFeatureById(id);
+
+  console.log(feature);
+
   const a = document.createElement('a');
   a.className = 'panel-block';
   a.id = feature.id;
@@ -151,15 +153,31 @@ const showFeatureDetails = (id) => {
 };
 
 // Sets up the Mapbox and downloads geojson
-const init = () => {
-  map.initMap(lnglatUSA);
-  map.setZoomLevel(3);
-  ajax.downloadFile('data/parks.geojson', (str) => {
-    geojson = JSON.parse(str);
-    // console.log(geojson);
+// Use async/await in init function
+const init = async () => {
+  try {
+    // Initialize the map and set its zoom level
+    map.initMap(lnglatUSA);
+    map.setZoomLevel(3);
+
+    // Await the download of the geojson file
+    const geojsonData = await ajax.downloadFile('data/parks.geojson');
+    
+    // Parse the geojson data
+    geojson = JSON.parse(geojsonData);
+
+    console.log("Features: " + geojson.features);
+
+    // After geojson is loaded, add markers and refresh the favorites
     map.addMarkersToMap(geojson, showFeatureDetails);
-    setupUI();
-  });
+    setupUI(); // Setup UI after geojson is loaded
+
+    // Refresh the favorites now that geojson is available
+    refreshFavorites();
+
+  } catch (error) {
+    console.error('Error during initialization:', error);
+  }
 };
 
-init();
+init(); // Call the async init function
