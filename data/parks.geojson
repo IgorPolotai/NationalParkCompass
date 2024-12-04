@@ -702,6 +702,546 @@
 		  ],
 		  "type": "Point"
 		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "kenaiFjords",
+		"properties": {
+				  "title": "Kenai Fjords National Park",
+				  "subtitle": "Where Mountains, Ice, and Ocean Meet",
+				  "description": "At the edge of the Kenai Peninsula lies a land where the ice age lingers. Nearly 40 glaciers flow from the Harding Icefield, Kenai Fjords' crowning feature. Wildlife thrives in icy waters and lush forests along the fjords once carved by the vast expanse of ice. Today, shrinking glaciers bear witness to the effects of our changing climate.",
+				  "url": "https://www.nps.gov/kefj",
+				  "address": "Right outside Seward, AK 99664",
+				  "phone": "(907) 422 0500",
+				  "reason": "Kayak to the Aialik Glacier."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-149.816360,
+			60.043777
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "kobukValley",
+		"properties": {
+				  "title": "Kobuk Valley National Park",
+				  "subtitle": "Land of the Living Sand Dunes",
+				  "description": "Caribou, sand dunes, the Kobuk River, Onion Portage - just some of the facets of Kobuk Valley National Park. Thousands of caribou migrate through, their tracks crisscrossing sculpted dunes. The Kobuk River is an ancient and current corridor for people and wildlife. For 9000 years, people came to Onion Portage to harvest caribou as they swam the river. Even today, that rich tradition continues.",
+				  "url": "https://www.nps.gov/kova",
+				  "address": "171 3rd Ave, Kotzebue, AK 99752",
+				  "phone": "(907) 442 3890",
+				  "reason": "Walk across the Great Kobuk Sand Dunes."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-159.1988853,
+			67.3533647
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "lakeClark",
+		"properties": {
+				  "title": "Lake Clark National Park",
+				  "subtitle": "Stunning Wilderness",
+				  "description": "Lake Clark National Park and Preserve is a land of stunning beauty. Volcanoes steam, salmon run, bears forage, and craggy mountains reflect in shimmering turquoise lakes. Here, too, local people and culture still depend on the land and water. Venture into the park to become part of the wilderness.",
+				  "url": "https://www.nps.gov/lacl",
+				  "address": "1 Park Place, Port Alsworth, AK 99653",
+				  "phone": "(907) 644 3626",
+				  "reason": "Paddle and hike around the Twin Lakes."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-154.323502,
+			60.412697
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "lassenVolcanic",
+		"properties": {
+				  "title": "Lassen Volcanic National Park",
+				  "subtitle": "From One Beautiful Form into Another",
+				  "description": "Lassen Volcanic National Park is home to steaming fumaroles, meadows freckled with wildflowers, clear mountain lakes, and numerous volcanoes. Jagged peaks tell the story of its eruptive past while hot water continues to shape the land.",
+				  "url": "https://www.nps.gov/lavo",
+				  "address": "38050 Highway 36 East, Mineral, CA 96063",
+				  "phone": "(530) 595 4480",
+				  "reason": "Summit Lassen Peak"
+			  },
+		"geometry": {
+		  "coordinates": [
+			-121.4207,
+			40.4977
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "mammothCave",
+		"properties": {
+				  "title": "Mammoth Cave National Park",
+				  "subtitle": "More Than A Cave",
+				  "description": "Rolling hills, deep river valleys, and the world's longest known cave system. Mammoth Cave National Park is home to thousands of years of human history and a rich diversity of plant and animal life, earning it the title of UNESCO World Heritage Site and International Biosphere Reserve.",
+				  "url": "https://www.nps.gov/maca",
+				  "address": "1 Visitor Center Parkway, Mammoth Cave, KY 42259",
+				  "phone": "(270) 758 2180",
+				  "reason": "Explore the world's longest known cave system."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-86.1000,
+			37.1862
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "mesaVerde",
+		"properties": {
+				  "title": "Mesa Verde National Park",
+				  "subtitle": "A Sacred Place",
+				  "description": "For over 700 years, the Ancestral Pueblo people built thriving communities on the mesas and in the cliffs of Mesa Verde. Today, the park protects the rich cultural heritage of 27 Pueblos and Tribes and offers visitors a spectacular window into the past. This World Heritage Site and International Dark Sky Park is home to over a thousand species, including several that live nowhere else on earth.",
+				  "url": "https://www.nps.gov/meve",
+				  "address": "34840 Hwy 160, Mancos, CO 81328",
+				  "phone": "(970) 529 4465",
+				  "reason": "Tour the Cliff Palace."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-108.4618,
+			37.2309
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "mountRainier",
+		"properties": {
+				  "title": "Mount Rainier National Park",
+				  "subtitle": "An Icon on the Horizon",
+				  "description": "Ascending to 14,410 feet above sea level, Mount Rainier stands as an icon in the Washington landscape. An active volcano, Mount Rainier is the most glaciated peak in the contiguous U.S.A., spawning five major rivers. Subalpine wildflower meadows ring the icy volcano while ancient forest cloaks Mount Rainier’s lower slopes. Wildlife abounds in the park’s ecosystems. A lifetime of discovery awaits.",
+				  "url": "https://www.nps.gov/mora",
+				  "address": "39000 State Route 706 Em Ashford, WA 98304",
+				  "phone": "(360) 569 2211",
+				  "reason": "Climb Mount Rainier."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-121.726906,
+			46.879967
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "nationalParkOfAmericanSamoa",
+		"properties": {
+				  "title": "National Park of American Samoa",
+				  "subtitle": "Explore the Islands of Sacred Earth",
+				  "description": "The National Park of American Samoa invites you to discover the vibrant culture and stunning landscapes of the South Pacific. Experience a world unlike any other, where natural beauty and cultural heritage are protected for future generations. Join us in exploring these islands of sacred earth!",
+				  "url": "https://www.nps.gov/npsa",
+				  "address": "Pago Pago, AS 96799",
+				  "phone": "(684) 633 7082 x22",
+				  "reason": "Hike to a hidden beach."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-170.6970,
+			14.2744
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "newRiverGorge",
+		"properties": {
+				  "title": "New River Gorge National Park",
+				  "subtitle": "A River Runs Through It",
+				  "description": "A rugged, whitewater river flowing northward through deep canyons, the New River is among the oldest rivers on the continent. The park encompasses over 70,000 acres of land along the New River, is rich in cultural and natural history, and offers an abundance of scenic and recreational opportunities.",
+				  "url": "https://www.nps.gov/neri",
+				  "address": "104 Main Street, Glen Jean, WV 25846",
+				  "phone": "(304) 465 0508",
+				  "reason": "Whitewater raft the Lower New River."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-80.89778,
+			37.78320
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "northCascades",
+		"properties": {
+				  "title": "North Cascades National Park",
+				  "subtitle": "The North Cascades are Calling!",
+				  "description": "Less than three hours from Seattle, an alpine landscape beckons. Discover communities of life adapted to moisture in the west and recurring fire in the east. Explore jagged peaks crowned by more than 300 glaciers. Listen to cascading waters in forested valleys. Witness a landscape sensitive to the Earth's changing climate. Help steward the ecological heart of the Cascades.",
+				  "url": "https://www.nps.gov/noca",
+				  "address": "810 State Route 20, Sedro-Woolley, WA 98284",
+				  "phone": "(360) 854 7200",
+				  "reason": "Visit the village of Stehekin."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-121.2985,
+			48.7718
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "olympic",
+		"properties": {
+				  "title": "Olympic National Park",
+				  "subtitle": "Discover Olympic's Diverse Wilderness",
+				  "description": "With its incredible range of precipitation and elevation, diversity is the hallmark of Olympic National Park. Encompassing nearly a million acres, the park protects a vast wilderness, thousands of years of human history, and several distinctly different ecosystems, including glacier-capped mountains, old-growth temperate rain forests, and over 70 miles of wild coastline. Come explore!",
+				  "url": "https://www.nps.gov/olym",
+				  "address": "3002 Mount Angeles Road, Port Angeles, WA 98362",
+				  "phone": "(360) 565 3130",
+				  "reason": "Walk or backpack in the Hoh Rainforest."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-123.6044,
+			47.8021
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "petrifiedForest",
+		"properties": {
+				  "title": "Petrified Forest National Park",
+				  "subtitle": "A Place for Discovery",
+				  "description": "Petrified Forest is best known for its Triassic fossils. It's like having two parks in one, an ecosystem over 200 million years old with plants and animals now represented in the surreal landscape of the Painted Desert. There is also a living park with its own denizens adapted to a demanding environment.",
+				  "url": "https://www.nps.gov/pefo",
+				  "address": "Exit 311, Interstate 40, Petrified Forest, AZ 86028",
+				  "phone": "(928) 524 6228",
+				  "reason": "Hike the Blue Mesa Trail."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-109.7584,
+			34.9583
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "pinnacles",
+		"properties": {
+				  "title": "Pinnacles National Park",
+				  "subtitle": "A Landscape Forged by Volcanoes",
+				  "description": "Around 23 million years ago, a series of volcanic eruptions shaped the landscape that is now Pinnacles National Park. The remnants of these ancient eruptions have formed a striking terrain of rocky spires and deep canyons. Visitors can explore diverse environments, from chaparral and oak woodlands to the cool, shaded depths of canyon floors.",
+				  "url": "https://www.nps.gov/pinn",
+				  "address": "5000 East Entrance Road, Paicines, CA 95043",
+				  "phone": "(831) 389 4486",
+				  "reason": "Hike through volcanic peaks."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-121.197243,
+			36.491508
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "redwood",
+		"properties": {
+				  "title": "Redwood National Park",
+				  "subtitle": "Beyond the Giants: Explore Redwood's Many Wonders",
+				  "description": "Renowned for the world’s tallest trees, Redwood’s landscapes span from open prairies and oak woodlands to pristine rivers and untamed coastline. This ancient home has supported people for thousands of years. The National Park Service and California State Parks now work to safeguard and rejuvenate these lands for everyone’s enjoyment, learning, and inspiration.",
+				  "url": "https://www.nps.gov/redw",
+				  "address": "1111 Second Street, Crescent City, CA 95531",
+				  "phone": "(707) 464 6101",
+				  "reason": "Visit the Tall Trees Grove."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-124.004631,
+			41.213181
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "rockyMountain",
+		"properties": {
+				  "title": "Rocky Mountain National Park",
+				  "subtitle": "Welcome to a Land of Extremes!",
+				  "description": "Rocky Mountain National Park's 415 square miles (265,807 acres) encompasses a spectacular range of mountain environments. From meadows found in the montane life zone to glistening alpine lakes and up to the towering mountain peaks, there is something for everyone to discover. Along the way explore over 300 miles of hiking trails and incredible wildlife viewing.",
+				  "url": "https://www.nps.gov/romo",
+				  "address": "1000 US Hwy 36, Estes Park, CO 80517",
+				  "phone": "(970) 586 1222",
+				  "reason": "Climb Longs Peak"
+			  },
+		"geometry": {
+		  "coordinates": [
+			-105.688103,
+			40.343182
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "saguaro",
+		"properties": {
+				  "title": "Saguaro National Park",
+				  "subtitle": "Icon of the Southwest",
+				  "description": "Tucson, Arizona is home to the nation's largest cacti. The giant saguaro is the universal symbol of the American west. These majestic plants, found only in a small portion of the United States, are protected by Saguaro National Park, to the east and west of the modern city of Tucson. Here you have a chance to see these enormous cacti, silhouetted by the beauty of a magnificent desert sunset.",
+				  "url": "https://www.nps.gov/sagu",
+				  "address": "Fifteen miles west of Tuscan, AZ 85701",
+				  "phone": "(520) 733 5153",
+				  "reason": "Hike up Wasson Peak"
+			  },
+		"geometry": {
+		  "coordinates": [
+			-111.166618,
+			32.296738
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "sequoia&KingCanyon",
+		"properties": {
+				  "title": "Sequoia & King Canyon National Park",
+				  "subtitle": "A Land of Giants",
+				  "description": "Huge mountains, rugged foothills, deep canyons, vast caverns, and the world’s largest trees exemplify the diversity of landscapes, life, and beauty here. Explore these pages to plan your visit or to learn about the plants and animals here and the threats they face. Ancient giant sequoias may seem invincible, but they, too are vulnerable.",
+				  "url": "https://www.nps.gov/seki",
+				  "address": "47040 Generals Highway, Three Rivers, CA 93271",
+				  "phone": "(559) 565 3341",
+				  "reason": "Backpack to Redwood Meadow Grove."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-118.565750,
+			36.386366
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "shenandoah",
+		"properties": {
+				  "title": "Shenandoah National Park",
+				  "subtitle": "Nature's Calling!",
+				  "description": "Just 75 miles from the bustle of Washington, D.C., Shenandoah National Park is a land bursting with cascading waterfalls, spectacular vistas, fields of wildflowers, and quiet wooded hollows. With over 200,000 acres of protected lands that are haven to deer, songbirds, and black bear, there's so much to explore...and your journey begins right here!",
+				  "url": "https://www.nps.gov/shen",
+				  "address": "21073 Skyline Drive, Front Royal, VA",
+				  "phone": "(540) 999 3500",
+				  "reason": "Drive Skyline Drive."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-78.292694,
+			38.700516
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "theodoreRoosevelt",
+		"properties": {
+				  "title": "Theodore Roosevelt National Park",
+				  "subtitle": "In Honor of a President",
+				  "description": "When Theodore Roosevelt came to Dakota Territory to hunt bison in 1883, he was a skinny, young, spectacled dude from New York. He could not have imagined how his adventure in this remote and unfamiliar place would forever alter the course of the nation. The rugged landscape and strenuous life that TR experienced here would help shape a conservation policy that we still benefit from today.",
+				  "url": "https://www.nps.gov/thro",
+				  "address": "315 Second Avenue, Medora, ND 58645",
+				  "phone": "(701) 623 4466",
+				  "reason": "Spot wildlife like bison."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-103.4592227,
+			46.9535921
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "virginIslands",
+		"properties": {
+				  "title": "Virgin Islands National Park",
+				  "subtitle": "Dive into St. John's 3,000 years of human history!",
+				  "description": "Go beyond Virgin Islands National Park's stunning white-sand beaches. Hike to historic plantation sites to learn about a challenging past when sugar and enslaved labor dominated life on the island. Visit the Indigenous Taino's ancient petroglyphs. Snorkel coral reefs to discover hidden marine life. Two-thirds of the island of St. John is national park, making it a unique destination for visitors.",
+				  "url": "https://www.nps.gov/viis",
+				  "address": "1300 Cruz Bay Creek, St. John, VI 00830",
+				  "phone": "(340) 776 6201",
+				  "reason": "Scuba dive at coral reefs and shipwrecks."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-64.896335,
+			18.335765
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "voyageurs",
+		"properties": {
+				  "title": "Voyageurs National Park",
+				  "subtitle": "A Park of Water, Islands, and Horizons",
+				  "description": "Voyageurs National Park spans 218,000 acres of lakes, forests, and streams in northern Minnesota. Established in 1975, the park is named after the French-Canadian Voyageurs who once navigated these abundant waters. Voyageurs National Park provides exceptional opportunities for recreation and exploration amidst landscapes rich in natural beauty, history, and cultural heritage.",
+				  "url": "https://www.nps.gov/voya",
+				  "address": "360 Hwy 11 East, International Falls, MN 56649",
+				  "phone": "(218) 283 6600",
+				  "reason": "Captain a houseboat."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-93.37704580,
+			48.60335410
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "whiteSands",
+		"properties": {
+				  "title": "White Sands National Park",
+				  "subtitle": "Like No Place Else on Earth",
+				  "description": "Rising from the heart of the Tularosa Basin is one of the world's great natural wonders - the glistening white sands of New Mexico. Great wave-like dunes of gypsum sand have engulfed 275 square miles of desert, creating the world's largest gypsum dunefield. White Sands National Park preserves a major portion of this unique dunefield, along with the plants and animals that live here.",
+				  "url": "https://www.nps.gov/whsa",
+				  "address": "Sixteen miles southwest of Alamogordo, NM 88310",
+				  "phone": "(575) 479 6124",
+				  "reason": "Hike the Alkali Flat Trail."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-106.171669,
+			32.779720
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "windCave",
+		"properties": {
+				  "title": "Wind Cave National Park",
+				  "subtitle": "Discover Two Parks in One",
+				  "description": "Wind Cave National Park protects two very different worlds - one deep within the earth, the other a sunlit world of many resources. Bison, elk, and other wildlife roam the rolling prairie grasslands and forested hillsides of one of America's oldest national parks. Below the remnant island of intact prairie sits Wind Cave, one of the longest and most complex caves in the world.",
+				  "url": "https://www.nps.gov/wica",
+				  "address": "26611 US Highway 385, Hot Springs, SD 57747",
+				  "phone": "(605) 745 4600",
+				  "reason": "Take a Wild Cave Tour."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-103.4394076,
+			43.5801835
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "wrangellStElias",
+		"properties": {
+				  "title": "Wrangell-St. Elias National Park",
+				  "subtitle": "America's Largest National Park",
+				  "description": "Wrangell-St. Elias is a vast national park that rises from the ocean all the way up to 18,008 ft. At 13.2 million acres, the park is the same size as Yellowstone National Park, Yosemite National Park, and Switzerland combined! Within this wild landscape, people continue to live off the land as they have done for centuries. This rugged, beautiful land is filled with opportunities for adventure.",
+				  "url": "https://www.nps.gov/wrst",
+				  "address": "Mile 106.8 Richardson Highway, Copper Center, AK 99573",
+				  "phone": "(907) 822 5234",
+				  "reason": "Ice climb the Root Glacier."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-142.985687,
+			61.710445
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "yellowstone",
+		"properties": {
+				  "title": "Yellowstone National Park",
+				  "subtitle": "The World's First National Park",
+				  "description": "On March 1, 1872, Yellowstone became the first national park for all to enjoy the unique hydrothermal and geologic features. Within Yellowstone's 2.2 million acres, visitors have unparalleled opportunities to observe wildlife in an intact ecosystem, explore geothermal areas that contain about half the world’s active geysers, and view geologic wonders like the Grand Canyon of the Yellowstone River.",
+				  "url": "https://www.nps.gov/yell",
+				  "address": "2 Officers Row, Yellowstone National Park, WY 82190",
+				  "phone": "(307) 344 7381",
+				  "reason": "Geyser gaze."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-110.588516,
+			44.423691
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "yosemite",
+		"properties": {
+				  "title": "Yosemite National Park",
+				  "subtitle": "",
+				  "description": "Not just a great valley, but a shrine to human foresight, the strength of granite, the power of glaciers, the persistence of life, and the tranquility of the High Sierra. First protected in 1864, Yosemite National Park is best known for its waterfalls, but within its nearly 1,200 square miles, you can find deep valleys, grand meadows, ancient giant sequoias, a vast wilderness area, and much more.",
+				  "url": "Walls of Granite",
+				  "address": "Tioga Road, Yosemite National Park, CA 95389",
+				  "phone": "(209) 372 0200",
+				  "reason": "Hike Half Dome."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-119.538330,
+			37.865101
+		  ],
+		  "type": "Point"
+		}
+	  },
+	  {
+		"type": "Feature",
+			  "id" : "zion",
+		"properties": {
+				  "title": "Zion National Park",
+				  "subtitle": "Utah's First National Park",
+				  "description": "Follow the paths where people have walked for thousands of years. Gaze up at massive sandstone cliffs of cream, pink, and red that soar into a brilliant blue sky. Experience the tall, stretching walls of a narrow slot canyon. Zion’s unique array of plants and animals will enchant you as you absorb the rich history of the past and enjoy the excitement of present-day adventures.",
+				  "url": "https://www.nps.gov/zion",
+				  "address": "1 Zion Park Blvd, Springdale, UT 84767",
+				  "phone": "(435) 772 3256",
+				  "reason": "Horseback ride."
+			  },
+		"geometry": {
+		  "coordinates": [
+			-113.028770,
+			37.297817
+		  ],
+		  "type": "Point"
+		}
 	  }
   ]
 }
