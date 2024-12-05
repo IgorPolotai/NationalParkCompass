@@ -35,8 +35,8 @@ const setupUI = () => {
 
   document.querySelector('#btn-favorite').onclick = () => {
     favoriteIds.push(currentId);
-    storage.writeToLocalStorage('fav-list', favoriteIds);
-    firebase.writeFavNameData(currentId, 1);
+    // storage.writeToLocalStorage('fav-list', favoriteIds);
+    // firebase.writeFavNameData(currentId, 1);
     refreshFavorites();
     updateButtons(currentId);
   };
@@ -45,21 +45,21 @@ const setupUI = () => {
     for (let i = 0; i < favoriteIds.length; i++) {
       if (favoriteIds[i] == currentId) {
         favoriteIds.splice(i, 1);
-        storage.writeToLocalStorage('fav-list', favoriteIds);
-        firebase.writeFavNameData(currentId, -1);
+        // storage.writeToLocalStorage('fav-list', favoriteIds);
+        // firebase.writeFavNameData(currentId, -1);
         refreshFavorites();
         updateButtons(currentId);
       }
     }
   };
 
-  loadFavorites();
+  // loadFavorites();
   updateButtons(currentId);
 };
 
 // Loads the list of favorited parks from local storage
 const loadFavorites = () => {
-  favoriteIds = storage.readFromLocalStorage('fav-list');
+  // favoriteIds = storage.readFromLocalStorage('fav-list');
   if (!Array.isArray(favoriteIds)) favoriteIds = [];
 };
 
@@ -159,11 +159,11 @@ const init = async () => {
 
     // Await the download of the geojson file
     const geojsonData = await ajax.downloadFile('data/parks.geojson');
-    
+
     // Parse the geojson data
     geojson = JSON.parse(geojsonData);
 
-    console.log("Features: " + geojson.features);
+    console.log(`Features: ${geojson.features}`);
 
     // After geojson is loaded, add markers and refresh the favorites
     map.addMarkersToMap(geojson, showFeatureDetails);
@@ -171,7 +171,6 @@ const init = async () => {
 
     // Refresh the favorites now that geojson is available
     refreshFavorites();
-
   } catch (error) {
     console.error('Error during initialization:', error);
   }
