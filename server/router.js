@@ -2,6 +2,9 @@ const controllers = require('./controllers');
 const mid = require('./middleware');
 
 const router = (app) => {
+  app.post('/upload', mid.requiresLogin, controllers.File.uploadFile);
+  app.get('/retrieve', mid.requiresLogin, controllers.File.retrieveFile);
+
   app.get('/getMap', mid.requiresLogin, controllers.Map.getMap);
   app.get('/getParkInfo', mid.requiresLogin, controllers.Map.getParkInfo);
 

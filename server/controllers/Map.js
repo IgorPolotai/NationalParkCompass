@@ -2,7 +2,7 @@
 const models = require('../models');
 
 const {
-  DigitalStamp, Favorites, Filestore, MapGeoData, PhotoGallery, TripDiary,
+  Account, Filestore, ParkTrip,
 } = models;
 
 const mapPage = async (req, res) => res.render('app');
@@ -34,7 +34,7 @@ const makeDigitalStamp = async (req, res) => {
       image: digitalStamp,
       owner: req.session.account._id,
     };
-    
+
     const newDigitalStamp = new DigitalStamp(digitalStampData);
     await newDigitalStamp.save();
     return res.status(201).json({
@@ -82,8 +82,8 @@ const makePhotoGallery = async (req, res) => {
 
 const getPhotoGallery = async (req, res) => {
   try {
-    const query = { owner: req.session.account._id };
-    const docs = await PhotoGallery.find(query).select('name images').lean().exec();
+    const query = { owner: req.session.account._id, parkName: req.body.parkName };
+    const docs = await ParkTrip.find(query).select('name images').lean().exec();
 
     return res.json({ images: docs });
   } catch (err) {
@@ -99,13 +99,11 @@ const makeTripDiary = async (req, res) => {
 
   const diaryData = {
     diary: req.body.diary,
-    owner: req.session.account._id,
   };
 
   try {
-    const newDiary = new TripDiary(diaryData);
+    const newDiary = new ParkTrip(diaryData);
     await newDiary.save();
-    // return res.json({ redirect: '/maker' });
     return res.status(201).json({ diary: newDiary.diary });
   } catch (err) {
     console.log(err);
@@ -118,8 +116,8 @@ const makeTripDiary = async (req, res) => {
 
 const getTripDiary = async (req, res) => {
   try {
-    const query = { owner: req.session.account._id };
-    const docs = await TripDiary.find(query).select('diary').lean().exec();
+    const query = { owner: req.session.account._id, parkName: req.body.parkName };
+    const docs = await ParkTrip.find(query).select('tripDiary').lean().exec();
 
     return res.json({ diary: docs });
   } catch (err) {
