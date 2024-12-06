@@ -11,8 +11,41 @@ const getMap = async (req, res) => {
 
 };
 
-const makeDigitalStamp = async (req, res) => {
+const getParkInfo = async (req, res) => {
 
+};
+
+const makeDigitalStamp = async (req, res) => {
+  if (!req.files || !req.files.sampleFile) {
+    return res.status(400).json({ error: 'No photo was submitted for the Digital Stamp!' });
+  }
+
+  if (!req.body.name || !req.body.visitDate) {
+    return res.status(400).json({ error: 'No date and/or name was submitted for the Digital Stamp!' });
+  }
+
+  try {
+    const digitalStamp = new Filestore(req.files);
+    await digitalStamp.save();
+
+    const digitalStampData = {
+      name: req.body.name,
+      visitDate: req.body.visitDate,
+      image: digitalStamp,
+      owner: req.session.account._id,
+    };
+    
+    const newDigitalStamp = new DigitalStamp(digitalStampData);
+    await newDigitalStamp.save();
+    return res.status(201).json({
+      name: newDigitalStamp.name,
+      visitDate: newDigitalStamp.visitDate,
+      image: newDigitalStamp.image,
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ error: 'An error occured creating the Digital Stamp!' });
+  }
 };
 
 const getDigitalStamp = async (req, res) => {
@@ -98,6 +131,7 @@ const getTripDiary = async (req, res) => {
 module.exports = {
   mapPage,
   getMap,
+  getParkInfo,
   makeDigitalStamp,
   getDigitalStamp,
   makeFavorites,

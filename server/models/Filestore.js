@@ -1,4 +1,3 @@
-
 /* This model file defines the mongoose schema and model for a
    database collection that can store files. The format is based
    on the file object that is sent to our server by the browser

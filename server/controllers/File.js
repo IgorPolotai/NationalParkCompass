@@ -1,4 +1,3 @@
-
 /* This controller file shows the two core handler functions for
    allowing users to upload and retrieve files sent to our server.
 
