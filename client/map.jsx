@@ -8,15 +8,43 @@ const { createRoot } = require('react-dom/client');
 
 const Favorites = (props) => {
     return (
-    <div class="panel"> 
-        <h2 class="panel-heading">Favorites</h2>
-            <div id="favorites-list">
-        </div>
-    </div> 
+        <div class="panel"> 
+            <h2 class="panel-heading">Favorites</h2>
+                <div id="favorites-list">
+            </div>
+        </div> 
     );
 };
 
 const ParkInfo = (props) => {
+    if (map.isNoParkSelected) { //Displays this at the beginning
+        return (
+            <div class="has-background-info p-1">
+            <div class="has-background-info p-1">
+                <h2 id="details-1" class="panel-heading m-1">Info</h2>
+                <div class="columns m-1">
+                    <div class="column is-one-third has-background-info-light mr-1">
+                        <div id="details-2">Click on a park to learn more about it!</div>
+                        <div class="control">
+                            <button id="btn-favorite" class="button is-success m-1">
+                                Favorite
+                            </button>
+    
+                            <button id="btn-delete" class="button is-warning m-1">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div class="column has-background-info-light">
+                        <h2 id="subtitle" class="subtitle is-size-6 has-text-weight-bold mb-1">Park Details</h2>
+                        <div id="details-3">Clicl on a park to learn all about it!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        );
+    };
+    
     return (
         <div class="has-background-info p-1">
 		<div class="has-background-info p-1">
@@ -44,7 +72,13 @@ const ParkInfo = (props) => {
     );
 };
 
-const DigitalStamp = (props) => {
+const DigitalStamp = (props) => {    
+    if (map.isNoParkSelected) {
+        return (
+            <div></div>
+        );
+    };
+    
     return (
         <div class="column is-one-quarter has-background-info-light mr-1">
             <div id="digitalStamp"><b>Digital Stamp</b></div>
@@ -53,6 +87,12 @@ const DigitalStamp = (props) => {
 };
 
 const TripDiary = (props) => {
+    if (map.isNoParkSelected) {
+        return (
+            <div></div>
+        );
+    }
+
     return (
         <div class="column has-background-info-light">
             <h2 class="subtitle is-size-6 has-text-weight-bold mb-1">Trip Diary</h2>
@@ -62,6 +102,12 @@ const TripDiary = (props) => {
 };
 
 const PhotoGallery = (props) => {
+    if (map.isNoParkSelected) {
+        return (
+            <div></div>
+        );
+    }
+    
     return (
         <div class="has-background-info p-1">
 		    <div class="has-background-info p-1">

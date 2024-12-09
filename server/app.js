@@ -35,7 +35,26 @@ redisClient.on('error', (err) => console.log('Redis Client Error', err));
 redisClient.connect().then(() => {
   const app = express();
 
-  // app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          scriptSrc: ['api.mapbox.com', 'events.mapbox.com', "'self'", 'blob:'],
+          styleSrc: [
+            'events.mapbox.com',
+            'cdn.jsdelivr.net',
+            'cdnjs.cloudflare.com',
+            'api.mapbox.com',
+            "'self'",
+          ],
+          defaultSrc: [
+            'events.mapbox.com', 'api.mapbox.com', "'self'", 'blob:', 'cdn.jsdelivr.net',
+            'cdnjs.cloudflare.com',
+          ],
+        },
+      },
+    }),
+  );
   app.use(fileUpload());
   app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
   app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));

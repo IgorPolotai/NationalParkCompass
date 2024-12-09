@@ -11,6 +11,10 @@ const lnglatUSA = [-98.5696, 39.8282];
 let favoriteIds = [];
 let currentId = '';
 
+let noParkSelected = true;
+
+const isNoParkSelected = () => noParkSelected;
+
 // II. Functions
 
 // Sets up the Map Control buttons, the favorite/delete buttons, and then calls other functions
@@ -137,6 +141,9 @@ const updateButtons = (id) => {
 // Updates park info based on what park you chose
 const showFeatureDetails = (id) => {
   // console.log(`showFeatureDetails - id=${id}`);
+
+  noParkSelected = false;
+
   const feature = getFeatureById(id);
   document.querySelector('#details-1').innerHTML = `${feature.properties.title}`;
   document.querySelector('#details-2').innerHTML =		`<b>Address: </b>${feature.properties.address}<br>
@@ -179,4 +186,5 @@ const init = async () => {
 
 module.exports = {
   init,
+  isNoParkSelected,
 };
