@@ -2,12 +2,6 @@ const controllers = require('./controllers');
 const mid = require('./middleware');
 
 const router = (app) => {
-  app.post('/upload', mid.requiresLogin, controllers.File.uploadFile);
-  app.get('/retrieve', mid.requiresLogin, controllers.File.retrieveFile);
-
-  app.get('/getMap', mid.requiresLogin, controllers.Map.getMap);
-  app.get('/getParkInfo', mid.requiresLogin, controllers.Map.getParkInfo);
-
   app.post('/makeDigitalStamp', mid.requiresLogin, controllers.Map.makeDigitalStamp);
   app.get('/getDigitalStamp', mid.requiresLogin, controllers.Map.getDigitalStamp);
 
@@ -27,7 +21,7 @@ const router = (app) => {
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
-  app.get('/map', mid.requiresLogin, controllers.Map.mapPage);
+  app.get('/map', /*mid.requiresLogin,*/ controllers.Map.mapPage);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 

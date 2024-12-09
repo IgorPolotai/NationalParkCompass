@@ -41,9 +41,39 @@ const FileSchema = new mongoose.Schema({
   mimetype: {
     type: String,
   },
+
+  /*
+    These next few new properties are for keeping track of park info
+  */
+
+  parkName: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+  },
+  owner: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'Account',
+  },
+  createdDate: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // Finally we construct a model based on our schema above.
+FileSchema.statics.toAPI = (doc) => ({
+  name: doc.name,
+  data: doc.data,
+  size: doc.size,
+  mimeType: doc.mimeType,
+  parkName: doc.parkName,
+  description: doc.description,
+});
+
 const FileModel = mongoose.model('FileModel', FileSchema);
 
 module.exports = FileModel;

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const map = require('./map.js');
 
 // I. Variables & constants
@@ -158,7 +159,7 @@ const init = async () => {
     map.setZoomLevel(3);
 
     // Await the download of the geojson file
-    const geojsonData = await ajax.downloadFile('data/parks.geojson');
+    const geojsonData = await ajax.downloadFile('./parks.geojson');
 
     // Parse the geojson data
     geojson = JSON.parse(geojsonData);

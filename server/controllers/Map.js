@@ -7,69 +7,113 @@ const {
 
 const mapPage = async (req, res) => res.render('app');
 
-const getMap = async (req, res) => {
-
-};
-
-const getParkInfo = async (req, res) => {
-
-};
-
 const makeDigitalStamp = async (req, res) => {
-  if (!req.files || !req.files.sampleFile) {
-    return res.status(400).json({ error: 'No photo was submitted for the Digital Stamp!' });
-  }
-
-  if (!req.body.name || !req.body.visitDate) {
-    return res.status(400).json({ error: 'No date and/or name was submitted for the Digital Stamp!' });
+  if (!req.body.visitedDate || !req.files || !req.files.image) {
+    return res.status(400).json({ error: 'The visited date and image are required!' });
   }
 
   try {
-    const digitalStamp = new Filestore(req.files);
-    await digitalStamp.save();
-
-    const digitalStampData = {
-      name: req.body.name,
-      visitDate: req.body.visitDate,
-      image: digitalStamp,
+    const file = req.files.image;
+    const newFile = new Filestore({
+      name: file.name,
+      data: file.data,
+      size: file.size,
+      mimetype: file.mimetype,
+      parkName: req.body.parkName,
       owner: req.session.account._id,
+    });
+
+    await newFile.save();
+
+    const parkTrip = await ParkTrip.findOne({
+      owner: req.session.account._id,
+      parkName: req.body.parkName,
+    });
+
+    if (!parkTrip) {
+      return res.status(404).json({ error: 'Park trip not found!' });
+    }
+
+    parkTrip.digitalStamp = {
+      visitedDate: new Date(req.body.visitedDate),
+      image: newFile._id,
     };
 
-    const newDigitalStamp = new DigitalStamp(digitalStampData);
-    await newDigitalStamp.save();
-    return res.status(201).json({
-      name: newDigitalStamp.name,
-      visitDate: newDigitalStamp.visitDate,
-      image: newDigitalStamp.image,
+    await parkTrip.save();
+
+    return res.status(200).json({
+      parkName: parkTrip.parkName,
+      visitDate: parkTrip.digitalStamp.visitedDate,
+      image: parkTrip.digitalStamp.image,
     });
   } catch (err) {
     console.log(err);
-    return res.status(400).json({ error: 'An error occured creating the Digital Stamp!' });
+    return res.status(400).json({ error: 'An error occurred updating the Digital Stamp!' });
   }
 };
 
 const getDigitalStamp = async (req, res) => {
-  try {
-    const query = { owner: req.session.account._id };
-    const docs = await DigitalStamp.find(query).select('name visitDate image').lean().exec();
+  if (!req.query.parkName) {
+    return res.status(400).json({ error: 'Park name is required!' });
+  }
 
-    return res.json({ digitalStamp: docs });
+  try {
+    const parkTrip = await ParkTrip.findOne({
+      owner: req.session.account._id,
+      parkName: req.query.parkName,
+    }).lean();
+
+    if (!parkTrip) {
+      return res.status(404).json({ error: 'Park trip not found!' });
+    }
+
+    return res.json({
+      parkName: parkTrip.parkName,
+      visitDate: parkTrip.digitalStamp.visitedDate,
+      image: parkTrip.digitalStamp.image,
+    });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: 'Error retrieving the digital stamp!' });
+    return res.status(500).json({ error: 'Error retrieving the Digital Stamp!' });
   }
 };
 
 const makeFavorites = async (req, res) => {
+  if (!req.body.parkName) {
+    return res.status(400).json({ error: 'Park name is required!' });
+  }
 
+  try {
+    const account = await Account.findOne({ _id: req.session.account._id });
+
+    if (!account) {
+      return res.status(404).json({ error: 'Account not found!' });
+    }
+
+    if (account.favorites.includes(req.body.parkName)) {
+      return res.status(400).json({ error: 'This park is already in your favorites!' });
+    }
+
+    account.favorites.push(req.body.parkName);
+
+    await account.save();
+
+    return res.status(200).json({ message: 'Park added to favorites!' });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error adding park to favorites!' });
+  }
 };
 
 const getFavorites = async (req, res) => {
   try {
-    const query = { owner: req.session.account._id };
-    const docs = await Favorites.find(query).select('ids').lean().exec();
+    const account = await Account.findOne({ _id: req.session.account._id }).lean();
 
-    return res.json({ favorites: docs });
+    if (!account) {
+      return res.status(404).json({ error: 'Account not found!' });
+    }
+
+    return res.json({ favorites: account.favorites });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: 'Error retrieving favorites!' });
@@ -77,59 +121,117 @@ const getFavorites = async (req, res) => {
 };
 
 const makePhotoGallery = async (req, res) => {
+  if (!req.files || !req.files.image || !req.body.parkName) {
+    return res.status(400).json({ error: 'File and park name are required!' });
+  }
 
+  try {
+    const file = req.files.image;
+    const newFile = new Filestore({
+      name: file.name,
+      data: file.data,
+      size: file.size,
+      mimetype: file.mimetype,
+      parkName: req.body.parkName,
+      owner: req.session.account._id,
+    });
+
+    await newFile.save();
+
+    return res.status(201).json({
+      message: 'Photo added to gallery!',
+      photo: {
+        name: newFile.name,
+        size: newFile.size,
+        mimetype: newFile.mimetype,
+        parkName: newFile.parkName,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error uploading photo!' });
+  }
 };
 
 const getPhotoGallery = async (req, res) => {
-  try {
-    const query = { owner: req.session.account._id, parkName: req.body.parkName };
-    const docs = await ParkTrip.find(query).select('name images').lean().exec();
+  if (!req.query.parkName) {
+    return res.status(400).json({ error: 'Park name is required!' });
+  }
 
-    return res.json({ images: docs });
+  try {
+    const photos = await File.find({
+      owner: req.session.account._id,
+      parkName: req.query.parkName,
+    }).lean();
+
+    if (photos.length === 0) {
+      return res.status(404).json({ error: 'No photos found for this park!' });
+    }
+
+    return res.json({
+      photos: photos.map((photo) => ({
+        name: photo.name,
+        size: photo.size,
+        mimetype: photo.mimetype,
+        parkName: photo.parkName,
+      })),
+    });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: 'Error retrieving the photo gallery images!' });
+    return res.status(500).json({ error: 'Error retrieving photos!' });
   }
 };
 
 const makeTripDiary = async (req, res) => {
-  if (!req.body.diary) {
-    return res.status(400).json({ error: 'No entry was submitted to this park\'s Trip Diary.' });
+  if (!req.body.entry || !req.body.parkName) {
+    return res.status(400).json({ error: 'Entry and park name are required!' });
   }
 
-  const diaryData = {
-    diary: req.body.diary,
-  };
-
   try {
-    const newDiary = new ParkTrip(diaryData);
-    await newDiary.save();
-    return res.status(201).json({ diary: newDiary.diary });
+    const parkTrip = await ParkTrip.findOne({
+      owner: req.session.account._id,
+      parkName: req.body.parkName,
+    });
+
+    if (!parkTrip) {
+      return res.status(404).json({ error: 'Park trip not found!' });
+    }
+
+    parkTrip.tripDiary.diaryEntries.push(req.body.entry);
+
+    await parkTrip.save();
+
+    return res.status(200).json({ message: 'Diary entry added successfully!' });
   } catch (err) {
     console.log(err);
-    if (err.code === 11000) {
-      return res.status(400).json({ error: 'Diary already exists!' });
-    }
-    return res.status(500).json({ error: 'An error occured making the Trip Diary!' });
+    return res.status(500).json({ error: 'Error adding diary entry!' });
   }
 };
 
 const getTripDiary = async (req, res) => {
-  try {
-    const query = { owner: req.session.account._id, parkName: req.body.parkName };
-    const docs = await ParkTrip.find(query).select('tripDiary').lean().exec();
+  if (!req.query.parkName) {
+    return res.status(400).json({ error: 'Park name is required!' });
+  }
 
-    return res.json({ diary: docs });
+  try {
+    const parkTrip = await ParkTrip.findOne({
+      owner: req.session.account._id,
+      parkName: req.query.parkName,
+    }).lean();
+
+    if (!parkTrip) {
+      return res.status(404).json({ error: 'Park trip not found!' });
+    }
+
+    return res.json({ diaryEntries: parkTrip.tripDiary.diaryEntries });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: 'Error retrieving the trip diary entry!' });
+    return res.status(500).json({ error: 'Error retrieving diary entries!' });
   }
 };
 
 module.exports = {
   mapPage,
-  getMap,
-  getParkInfo,
   makeDigitalStamp,
   getDigitalStamp,
   makeFavorites,

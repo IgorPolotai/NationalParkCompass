@@ -18,11 +18,8 @@ const ParkTripSchema = new mongoose.Schema({
       type: Date,
     },
     image: {
-      type: FileModel,
-    },
-    createdDate: {
-      type: Date,
-      default: Date.now,
+      type: String,
+      ref: FileModel,
     },
   },
   tripDiary: {
@@ -34,17 +31,6 @@ const ParkTripSchema = new mongoose.Schema({
       default: Date.now,
     },
   },
-  photoGallery: {
-    imageGallery: {
-      type: [String],
-    },
-    imageCaptions: {
-      type: [String],
-    },
-    createdDates: {
-      type: [Date],
-    },
-  },
 });
 
 ParkTripSchema.statics.toAPI = (doc) => ({
@@ -52,8 +38,6 @@ ParkTripSchema.statics.toAPI = (doc) => ({
   digitalStampImage: doc.digitalStamp.image,
   digitalStampDate: doc.digitalStamp.visitedDate,
   tripDiaryEntries: doc.tripDiary.diaryEntries,
-  photoGalleryImages: doc.photoGallery.imageGallery,
-  photoGalleryCaptions: doc.photoGallery.imageCaptions,
 });
 
 const ParkTripModel = mongoose.model('ParkTrip', ParkTripSchema);
