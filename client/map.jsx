@@ -79,6 +79,14 @@ const PhotoGallery = (props) => {
 const App = () => {
     // const [reloadDomos, setReloadDomos] = useState(false);
 
+    useEffect(() => {
+        const createMap = async () => {
+            map.init();
+        };
+
+        createMap();
+    });
+
     return (
         <div>
 	        <div class="columns m-1">
@@ -148,7 +156,6 @@ const App = () => {
 const init = () => {
     const root = createRoot(document.getElementById('app'));
     root.render(<App />);
-    map.init();
 };
 
 window.onload = init;

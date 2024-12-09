@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 const map = require('./map.js');
+const geojson = require('./parks.json');
 
 // I. Variables & constants
 // NB - it's easy to get [longitude,latitude] coordinates with this tool: http://geojson.io/
@@ -8,7 +9,6 @@ const lnglatHawaii = [-155.844437, 19.741755];
 const lnglatUSA = [-98.5696, 39.8282];
 // let favoriteIds = ["p20","p79","p180","p43"];
 let favoriteIds = [];
-let geojson;
 let currentId = '';
 
 // II. Functions
@@ -159,10 +159,10 @@ const init = async () => {
     map.setZoomLevel(3);
 
     // Await the download of the geojson file
-    const geojsonData = await ajax.downloadFile('./parks.geojson');
+    // const geojsonData = await ajax.downloadFile('./parks.geojson');
 
     // Parse the geojson data
-    geojson = JSON.parse(geojsonData);
+    // geojson = JSON.parse(geojson);
 
     console.log(`Features: ${geojson.features}`);
 
@@ -177,4 +177,6 @@ const init = async () => {
   }
 };
 
-init(); // Call the async init function
+module.exports = {
+  init,
+};

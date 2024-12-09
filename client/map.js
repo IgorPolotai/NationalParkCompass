@@ -58,7 +58,7 @@ const addMarker = (feature, className, clickHandler) => {
   el.className = className;
   el.id = feature.id;
   // eslint-disable-next-line no-undef
-  el.style.backgroundImage = `url(../images/park-photos/${feature.id}.jpg)`;
+  el.style.backgroundImage = `url(/assets/img/park-photos/${feature.id}.jpg)`;
   el.style.backgroundSize = 'cover';
   el.style.width = '50px';
   el.style.height = '50px';
