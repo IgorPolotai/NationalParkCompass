@@ -7,6 +7,8 @@ const geojson = require('./parks.json');
 const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 
+const ParkContext = createContext();
+
 // const Favorites = (props) => {
 //     return (
 //         <div class="panel"> 
@@ -79,8 +81,16 @@ const { createRoot } = require('react-dom/client');
     // );
 // };
 
-const ParkInfo = (props) => {
-    if (map.isNoParkSelected) { //Displays this at the beginning
+const ParkInfo = ({ noParkSelected }) => {
+    // const [noParkSelected, setParkSelected] = useState(true);
+    
+    // if (noParkSelected) {
+    //     return (
+    //         <div></div>
+    //     );
+    // };
+    
+    if ( noParkSelected ) { //Displays this at the beginning
         return (
             <div class="has-background-info p-1">
             <div class="has-background-info p-1">
@@ -88,7 +98,7 @@ const ParkInfo = (props) => {
                 <div class="columns m-1">
                     <div class="column is-one-third has-background-info-light mr-1">
                         <div id="details-2">Click on a park to learn more about it!</div>
-                        <div class="control">
+                        <div class="control" hidden='true'>
                             <button id="btn-favorite" class="button is-success m-1">
                                 Favorite
                             </button>
@@ -100,7 +110,7 @@ const ParkInfo = (props) => {
                     </div>
                     <div class="column has-background-info-light">
                         <h2 id="subtitle" class="subtitle is-size-6 has-text-weight-bold mb-1">Park Details</h2>
-                        <div id="details-3">Clicl on a park to learn all about it!</div>
+                        <div id="details-3">Click on a park to learn all about it!</div>
                     </div>
                 </div>
             </div>
@@ -115,7 +125,7 @@ const ParkInfo = (props) => {
 			<div class="columns m-1">
 				<div class="column is-one-third has-background-info-light mr-1">
 					<div id="details-2">Click on a park to learn more about it</div>
-					<div class="control">
+					<div class="control" hidden='false'>
 						<button id="btn-favorite" class="button is-success m-1">
 							Favorite
 						</button>
@@ -135,12 +145,20 @@ const ParkInfo = (props) => {
     );
 };
 
-const DigitalStamp = (props) => {    
-    if (map.isNoParkSelected) {
+const DigitalStamp = ({ noParkSelected }) => {    
+    // const [noParkSelected, setParkSelected] = useState(true);
+    
+    // if (noParkSelected) {
+    //     return (
+    //         <div></div>
+    //     );
+    // };
+
+    if ( noParkSelected ) {
         return (
             <div></div>
         );
-    };
+    }
     
     return (
         <div class="column is-one-quarter has-background-info-light mr-1">
@@ -149,8 +167,8 @@ const DigitalStamp = (props) => {
     );
 };
 
-const TripDiary = (props) => {
-    if (map.isNoParkSelected) {
+const TripDiary = ({ noParkSelected }) => {
+    if ( noParkSelected ) {
         return (
             <div></div>
         );
@@ -164,8 +182,8 @@ const TripDiary = (props) => {
     );
 };
 
-const PhotoGallery = (props) => {
-    if (map.isNoParkSelected) {
+const PhotoGallery = ({ noParkSelected }) => {
+    if ( noParkSelected ) {
         return (
             <div></div>
         );
@@ -177,7 +195,7 @@ const PhotoGallery = (props) => {
 			    <h2 class="panel-heading m-1">Photo Gallery</h2>
 			    <div class="columns m-1">
 				    <div class="column has-background-info-light mr-1">
-					    <div id="digitalStamp"><b>Upload Your Photos Here!</b></div>
+					    <div id="photoGallery"><b>See your park photos here!</b></div>
 				    </div>
 			    </div>
 		    </div>
@@ -185,8 +203,30 @@ const PhotoGallery = (props) => {
     )
 };
 
+const DataForm = (props) => {
+    if (map.isNoParkSelected) {
+        return (
+            <div></div>
+        );
+    }
+    
+    return (
+        <div class="has-background-info p-1">
+		    <div class="has-background-info p-1">
+			    <h2 class="panel-heading m-1">Upload Your Photos Here!</h2>
+			    <div class="columns m-1">
+				    <div class="column has-background-info-light mr-1">
+					    <div id="dataForm"></div>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    )
+}
+
 const App = () => {
     // const [reloadDomos, setReloadDomos] = useState(false);
+    const [noParkSelected, setParkSelected] = useState(true);
 
     useEffect(() => {
         const createMap = async () => {
@@ -194,7 +234,7 @@ const App = () => {
         };
 
         createMap();
-    });
+    }, []);
 
     return (
     <div>
@@ -220,6 +260,10 @@ const App = () => {
 
         <div id="photoGalleryDiv">
                 <PhotoGallery />
+        </div>
+
+        <div id="dataFormDiv">
+                <DataForm />
         </div>
     </div>
     );

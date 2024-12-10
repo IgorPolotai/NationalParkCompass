@@ -200,6 +200,9 @@ const showFeatureDetails = (id) => {
 
   currentId = id;
 
+  const event = new CustomEvent('parkSelected', { detail: { selected: false } });
+  window.dispatchEvent(event);
+
   updateButtons(currentId);
 };
 
