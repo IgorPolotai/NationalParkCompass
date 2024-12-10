@@ -202,6 +202,13 @@ const App = () => {
 const init = () => {
     const root = createRoot(document.getElementById('app'));
     root.render(<App />);
+
+    //Function to upgrade to Premium
+    document.getElementById('bannerAdLink').addEventListener("click", (e) => {  
+        e.preventDefault();
+        document.getElementById('title').innerHTML = 'National Park Compass Premium';
+        document.getElementById('bannerAd').remove();
+    });
 };
 
 window.onload = init;
