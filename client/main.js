@@ -38,22 +38,58 @@ const setupUI = () => {
     map.flyTo(lnglatUSA);
   };
 
-  document.querySelector('#btn-favorite').onclick = () => {
+  document.querySelector('#btn-favorite').onclick = async () => {
     favoriteIds.push(currentId);
-    // storage.writeToLocalStorage('fav-list', favoriteIds);
-    // firebase.writeFavNameData(currentId, 1);
+    // const parkName = document.getElementById('details-1').textContent;
+
+    try {
+      const response = await fetch('/makeFavorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ parkName: currentId }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error adding to favorites');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
     refreshFavorites();
     updateButtons(currentId);
   };
 
-  document.querySelector('#btn-delete').onclick = () => {
+  document.querySelector('#btn-delete').onclick = async () => {
+    // const parkName = document.getElementById('details-1').textContent;
+
     for (let i = 0; i < favoriteIds.length; i++) {
-      if (favoriteIds[i] == currentId) {
+      if (favoriteIds[i] === currentId) {
         favoriteIds.splice(i, 1);
-        // storage.writeToLocalStorage('fav-list', favoriteIds);
-        // firebase.writeFavNameData(currentId, -1);
+
+        try {
+          // eslint-disable-next-line no-await-in-loop
+          const response = await fetch('/deleteFavorites', {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ parkName: currentId }),
+          });
+
+          if (!response.ok) {
+            throw new Error('Error deleting');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+
         refreshFavorites();
         updateButtons(currentId);
+
+        return;
       }
     }
   };
@@ -63,9 +99,19 @@ const setupUI = () => {
 };
 
 // Loads the list of favorited parks from local storage
-const loadFavorites = () => {
-  // favoriteIds = storage.readFromLocalStorage('fav-list');
-  if (!Array.isArray(favoriteIds)) favoriteIds = [];
+const loadFavorites = async () => {
+  try {
+    const response = await fetch('/getFavorites');
+    if (!response.ok) {
+      throw new Error('Error fetching favorites');
+    }
+    const data = await response.json();
+    console.log("Favorite Data from Server: " + data.favorites);
+    favoriteIds = data.favorites;
+    refreshFavorites();
+  } catch (error) {
+    console.error('Error:', error);
+  }
 };
 
 // Refreshes the list of favorite parks whenever something is changed or loaded
@@ -178,6 +224,7 @@ const init = async () => {
     setupUI(); // Setup UI after geojson is loaded
 
     // Refresh the favorites now that geojson is available
+    loadFavorites();
     refreshFavorites();
   } catch (error) {
     console.error('Error during initialization:', error);
@@ -186,5 +233,7 @@ const init = async () => {
 
 module.exports = {
   init,
+  loadFavorites,
   isNoParkSelected,
+  refreshFavorites,
 };

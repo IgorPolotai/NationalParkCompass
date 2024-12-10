@@ -98,7 +98,34 @@ const makeFavorites = async (req, res) => {
 
     await account.save();
 
-    return res.status(200).json({ message: 'Park added to favorites!' });
+    return res.status(200).json({ message: 'Park added to favorites!', favorites: account.favorites });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: 'Error adding park to favorites!' });
+  }
+};
+
+const deleteFavorites = async (req, res) => {
+  if (!req.body.parkName) {
+    return res.status(400).json({ error: 'Park name is required!' });
+  }
+
+  try {
+    const account = await Account.findOne({ _id: req.session.account._id });
+
+    if (!account) {
+      return res.status(404).json({ error: 'Account not found!' });
+    }
+
+    if (!account.favorites.includes(req.body.parkName)) {
+      return res.status(400).json({ error: 'This park not in your favorites!' });
+    }
+
+    account.favorites.splice(account.favorites.indexOf(req.body.parkName), 1);
+
+    await account.save();
+
+    return res.status(200).json({ message: 'Park added to favorites!', favorites: account.favorites });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: 'Error adding park to favorites!' });
@@ -235,6 +262,7 @@ module.exports = {
   makeDigitalStamp,
   getDigitalStamp,
   makeFavorites,
+  deleteFavorites,
   getFavorites,
   makePhotoGallery,
   getPhotoGallery,

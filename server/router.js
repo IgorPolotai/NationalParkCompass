@@ -6,6 +6,7 @@ const router = (app) => {
   app.get('/getDigitalStamp', mid.requiresLogin, controllers.Map.getDigitalStamp);
 
   app.post('/makeFavorites', mid.requiresLogin, controllers.Map.makeFavorites);
+  app.delete('/deleteFavorites', mid.requiresLogin, controllers.Map.deleteFavorites);
   app.get('/getFavorites', mid.requiresLogin, controllers.Map.getFavorites);
 
   app.post('/makePhotoGallery', mid.requiresLogin, controllers.Map.makePhotoGallery);

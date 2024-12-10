@@ -115,6 +115,10 @@ const addMarkersToMap = (json, clickHandler) => {
   }
 };
 
-export {
-  initMap, flyTo, setZoomLevel, setPitchAndBearing, addMarkersToMap,
+module.exports = {
+  initMap,
+  flyTo,
+  setZoomLevel,
+  setPitchAndBearing,
+  addMarkersToMap,
 };
