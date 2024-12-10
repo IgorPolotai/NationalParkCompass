@@ -7,7 +7,7 @@ const geojson = require('./parks.json');
 const { useState, useEffect } = React;
 const { createRoot } = require('react-dom/client');
 
-const ParkContext = createContext();
+// const ParkContext = createContext();
 
 // const Favorites = (props) => {
 //     return (
@@ -81,7 +81,18 @@ const ParkContext = createContext();
     // );
 // };
 
-const ParkInfo = ({ noParkSelected }) => {
+const ReloadWatcher = (props) => {
+    const [parkName, setParkName] = useState('none');
+    map.registerUpdateParkName(setParkName);
+
+    return (
+        <div>
+            <p>CURRENT PARK NAME: {parkName}</p>
+        </div>
+    );
+};
+
+const ParkInfo = ( props ) => {
     // const [noParkSelected, setParkSelected] = useState(true);
     
     // if (noParkSelected) {
@@ -90,7 +101,7 @@ const ParkInfo = ({ noParkSelected }) => {
     //     );
     // };
     
-    if ( noParkSelected ) { //Displays this at the beginning
+    if ( map.isNoParkSelected ) { //Displays this at the beginning
         return (
             <div class="has-background-info p-1">
             <div class="has-background-info p-1">
@@ -98,7 +109,7 @@ const ParkInfo = ({ noParkSelected }) => {
                 <div class="columns m-1">
                     <div class="column is-one-third has-background-info-light mr-1">
                         <div id="details-2">Click on a park to learn more about it!</div>
-                        <div class="control" hidden='true'>
+                        <div class="control">
                             <button id="btn-favorite" class="button is-success m-1">
                                 Favorite
                             </button>
@@ -125,7 +136,7 @@ const ParkInfo = ({ noParkSelected }) => {
 			<div class="columns m-1">
 				<div class="column is-one-third has-background-info-light mr-1">
 					<div id="details-2">Click on a park to learn more about it</div>
-					<div class="control" hidden='false'>
+					<div class="control">
 						<button id="btn-favorite" class="button is-success m-1">
 							Favorite
 						</button>
@@ -145,7 +156,7 @@ const ParkInfo = ({ noParkSelected }) => {
     );
 };
 
-const DigitalStamp = ({ noParkSelected }) => {    
+const DigitalStamp = ( props ) => {    
     // const [noParkSelected, setParkSelected] = useState(true);
     
     // if (noParkSelected) {
@@ -154,11 +165,11 @@ const DigitalStamp = ({ noParkSelected }) => {
     //     );
     // };
 
-    if ( noParkSelected ) {
-        return (
-            <div></div>
-        );
-    }
+    // if ( noParkSelected ) {
+    //     return (
+    //         <div></div>
+    //     );
+    // }
     
     return (
         <div class="column is-one-quarter has-background-info-light mr-1">
@@ -167,12 +178,12 @@ const DigitalStamp = ({ noParkSelected }) => {
     );
 };
 
-const TripDiary = ({ noParkSelected }) => {
-    if ( noParkSelected ) {
-        return (
-            <div></div>
-        );
-    }
+const TripDiary = ( props ) => {
+    // if ( noParkSelected ) {
+    //     return (
+    //         <div></div>
+    //     );
+    // }
 
     return (
         <div class="column has-background-info-light">
@@ -182,12 +193,12 @@ const TripDiary = ({ noParkSelected }) => {
     );
 };
 
-const PhotoGallery = ({ noParkSelected }) => {
-    if ( noParkSelected ) {
-        return (
-            <div></div>
-        );
-    }
+const PhotoGallery = ( props ) => {
+    // if ( noParkSelected ) {
+    //     return (
+    //         <div></div>
+    //     );
+    // }
     
     return (
         <div class="has-background-info p-1">
@@ -204,25 +215,173 @@ const PhotoGallery = ({ noParkSelected }) => {
 };
 
 const DataForm = (props) => {
-    if (map.isNoParkSelected) {
-        return (
-            <div></div>
-        );
-    }
-    
+    const [image, setImage] = useState(null);
+    const [visitedDate, setVisitedDate] = useState('');
+    const [isDigitalStamp, setIsDigitalStamp] = useState(false);
+    const [tripDiary, setTripDiary] = useState('');
+    const [uploading, setUploading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    let parkName = document.getElementById('details-1');
+  
+    const handleFileChange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        setImage(file);
+      }
+    };
+  
+    const handleCheckboxChange = (e) => {
+      setIsDigitalStamp(e.target.checked);
+    };
+  
+    const handleDiaryChange = (e) => {
+      setTripDiary(e.target.value);
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      if (!image || !parkName || !visitedDate) {
+        setErrorMessage('Please fill all fields and upload an image.');
+        return;
+      }
+  
+      setUploading(true);
+      setErrorMessage('');
+  
+      const formData = new FormData();
+      formData.append('image', image);
+      formData.append('parkName', parkName);
+  
+      try {
+        // Upload image and add it to the gallery
+        const photoRes = await fetch('/makePhotoGallery', {
+          method: 'POST',
+          body: formData,
+        });
+  
+        if (!photoRes.ok) {
+          throw new Error('Failed to upload photo');
+        }
+  
+        // If the user selected the checkbox, set the uploaded image as the digital stamp
+        if (isDigitalStamp) {
+          const digitalStampData = {
+            visitedDate,
+            parkName,
+          };
+  
+          const digitalStampRes = await fetch('/makeDigitalStamp', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(digitalStampData),
+          });
+  
+          if (!digitalStampRes.ok) {
+            throw new Error('Failed to set digital stamp');
+          }
+        }
+  
+        // Submit the trip diary entry
+        if (tripDiary) {
+          const diaryData = {
+            entry: tripDiary,
+            parkName,
+          };
+  
+          const diaryRes = await fetch('/makeTripDiary', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(diaryData),
+          });
+  
+          if (!diaryRes.ok) {
+            throw new Error('Failed to add diary entry');
+          }
+        }
+  
+        setImage(null);
+        setVisitedDate('');
+        setTripDiary('');
+        setIsDigitalStamp(false);
+  
+      } catch (err) {
+        console.error('Error uploading data:', err);
+        setErrorMessage('An error occurred while uploading data.');
+      } finally {
+        setUploading(false);
+      }
+    };
+  
     return (
-        <div class="has-background-info p-1">
-		    <div class="has-background-info p-1">
-			    <h2 class="panel-heading m-1">Upload Your Photos Here!</h2>
-			    <div class="columns m-1">
-				    <div class="column has-background-info-light mr-1">
-					    <div id="dataForm"></div>
-				    </div>
-			    </div>
-		    </div>
-	    </div>
-    )
-}
+      <div className="has-background-info p-1">
+        <div className="has-background-info p-1">
+          <h2 className="panel-heading m-1">Upload Your Content Here!</h2>
+          <div className="columns m-1">
+            <div className="column has-background-info-light mr-1">
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="imageUpload">Choose a photo:</label>
+                  <input
+                    type="file"
+                    id="imageUpload"
+                    onChange={handleFileChange}
+                    accept="image/*"
+                    required
+                  />
+                </div>
+  
+                <div>
+                  <label htmlFor="visitedDate">Visited Date:</label>
+                  <input
+                    type="date"
+                    id="visitedDate"
+                    value={visitedDate}
+                    onChange={(e) => setVisitedDate(e.target.value)}
+                    required
+                  />
+                </div>
+  
+                <div>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={isDigitalStamp}
+                      onChange={handleCheckboxChange}
+                    />
+                    Set this photo as your digital stamp for this park
+                  </label>
+                </div>
+  
+                <div>
+                  <label htmlFor="tripDiary">Trip Diary Entry:</label>
+                  <textarea
+                    id="tripDiary"
+                    value={tripDiary}
+                    onChange={handleDiaryChange}
+                    placeholder="Write a diary entry"
+                  />
+                </div>
+  
+                <div>
+                  {errorMessage && <p className="error">{errorMessage}</p>}
+                  <button type="submit" disabled={uploading}>
+                    {uploading ? 'Uploading...' : 'Submit'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
 
 const App = () => {
     // const [reloadDomos, setReloadDomos] = useState(false);
@@ -264,6 +423,10 @@ const App = () => {
 
         <div id="dataFormDiv">
                 <DataForm />
+        </div>
+
+        <div>
+            <ReloadWatcher />
         </div>
     </div>
     );

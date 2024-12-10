@@ -11,9 +11,12 @@ const lnglatUSA = [-98.5696, 39.8282];
 let favoriteIds = [];
 let currentId = '';
 
-let noParkSelected = true;
+// PASS PARK NAME TO REACT HERE
+let updateParkName;
 
-const isNoParkSelected = () => noParkSelected;
+const registerUpdateParkName = (updateFunc) => {
+  updateParkName = updateFunc;
+};
 
 // II. Functions
 
@@ -188,7 +191,7 @@ const updateButtons = (id) => {
 const showFeatureDetails = (id) => {
   // console.log(`showFeatureDetails - id=${id}`);
 
-  noParkSelected = false;
+  updateParkName(document.getElementById('details-1').textContent);
 
   const feature = getFeatureById(id);
   document.querySelector('#details-1').innerHTML = `${feature.properties.title}`;
@@ -220,7 +223,7 @@ const init = async () => {
     // Parse the geojson data
     // geojson = JSON.parse(geojson);
 
-    console.log(`Features: ${geojson.features}`);
+    // console.log(`Features: ${geojson.features}`);
 
     // After geojson is loaded, add markers and refresh the favorites
     map.addMarkersToMap(geojson, showFeatureDetails);
@@ -229,6 +232,9 @@ const init = async () => {
     // Refresh the favorites now that geojson is available
     loadFavorites();
     refreshFavorites();
+
+    updateParkName(document.getElementById('details-1').textContent);
+
   } catch (error) {
     console.error('Error during initialization:', error);
   }
@@ -237,6 +243,6 @@ const init = async () => {
 module.exports = {
   init,
   loadFavorites,
-  isNoParkSelected,
+  registerUpdateParkName,
   refreshFavorites,
 };
