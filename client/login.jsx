@@ -42,6 +42,23 @@ const handleSignup = (e) => {
   return false;
 };
 
+const handleChangePassword = (e) => {
+  e.preventDefault();
+  helper.hideError();
+
+  const username = e.target.querySelector('#changeUser').value;
+  const pass = e.target.querySelector('#changePass').value;
+  const newPass = e.target.querySelector('#changeNewPass').value;
+
+  if (!username || !pass || !newPass) {
+    helper.handleError('All fields are required!');
+    return false;
+  }
+
+  helper.sendPost(e.target.action, { username, pass, newPass });
+  return false;
+};
+
 const LoginWindow = (props) => {
     return (
         <form id="loginForm"
@@ -83,6 +100,28 @@ const SignupWindow = (props) => {
     );
 };
 
+const ChangePasswordWindow = (props) => {
+  return (
+      <form id="changePasswordForm"
+          name="changePasswordForm"
+          onSubmit={handleChangePassword}
+          action="/changePassword"
+          method="POST"
+          className="mainForm">
+              <label htmlFor="username">Username: </label>
+              <input class="loginInput" id="changeUser" type="text" name="username" placeholder="username" />
+              <br />
+              <label htmlFor="pass">Old Password: </label>
+              <input class="loginInput" id="changePass" type="password" name="pass" placeholder="type old password" />
+              <br />
+              <label htmlFor="pass">New Password: </label>
+              <input class="loginInput" id="changeNewPass" type="password" name="newPassword" placeholder="type new password" />
+              <br />
+              <input className="formSubmit" type="submit" value="Change Password" />
+      </form>
+  );
+};
+
 const init = () => {
     const loginButton = document.getElementById('loginButton');
     const signupButton = document.getElementById('signupButton');
@@ -99,6 +138,12 @@ const init = () => {
         e.preventDefault();
         root.render(<SignupWindow />);
         return false;
+    });
+
+    changePasswordButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      root.render(<ChangePasswordWindow />);
+      return false;
     });
 
     root.render(<SignupWindow />);

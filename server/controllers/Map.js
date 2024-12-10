@@ -186,7 +186,7 @@ const getPhotoGallery = async (req, res) => {
   }
 
   try {
-    const photos = await File.find({
+    const photos = await Filestore.find({
       owner: req.session.account._id,
       parkName: req.query.parkName,
     }).lean();

@@ -32,6 +32,47 @@ const login = (req, res) => {
   });
 };
 
+const changePassword = (req, res) => {
+  const username = `${req.body.username}`;
+  const pass = `${req.body.pass}`;
+  const newPass = `${req.body.newPass}`;
+
+  if (!username || !pass || !newPass) {
+    return res.status(400).json({ error: 'All fields are required!' });
+  }
+
+  return Account.authenticate(username, pass, async (err, account) => {
+    if (err || !account) {
+      return res.status(401).json({ error: 'Wrong username or password!' });
+    }
+
+    try {
+      // Hash the new password first, before passing it to the update
+      const hashedNewPass = await Account.generateHash(newPass);
+
+      // Update the password in the database
+      const updatedAccount = await Account.findOneAndUpdate(
+        { username },
+        { password: hashedNewPass },  // Ensure hashed password is passed here
+        { new: true } // This ensures we get the updated document back
+      );
+
+      // Check if the update was successful
+      if (!updatedAccount) {
+        return res.status(400).json({ error: 'Password update failed!' });
+      }
+
+      // Update session with the new account information
+      req.session.account = Account.toAPI(updatedAccount);
+
+      return res.json({ redirect: '/map' });
+    } catch (updateErr) {
+      console.error('Error during password update:', updateErr);
+      return res.status(500).json({ error: 'An error occurred while updating password!' });
+    }
+  });
+};
+
 const signup = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
@@ -63,6 +104,7 @@ const signup = async (req, res) => {
 module.exports = {
   loginPage,
   aboutPage,
+  changePassword,
   login,
   logout,
   signup,

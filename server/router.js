@@ -20,10 +20,12 @@ const router = (app) => {
   app.get('/about', mid.requiresLogin, controllers.Account.aboutPage);
 
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
+  app.post('/changePassword', mid.requiresSecure, mid.requiresLogout, controllers.Account.changePassword);
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
   app.get('/map', mid.requiresLogin, controllers.Map.mapPage);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('*', (req, res) => res.redirect('/'));
 };
 
 module.exports = router;
