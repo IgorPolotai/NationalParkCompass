@@ -48,9 +48,43 @@
 	gap: 20px;  
 }
 
-#compass {
+nav {
+	margin-top: 16%;
+	display: flex;               
+	justify-content: center;     
+	align-items: center;        
+	text-align: center;          
+	gap: 20px;  
+}
+
+#errorMessageDiv {
+	text-align: center;
+}
+
+#content {
+	display: flex; 
+	flex-direction: column;              
+	justify-content: center;     
+	align-items: center;        
+	text-align: center;          
+	gap: 20px;  
+}
+
+.container #logOut {
+	margin-left: auto;
+}
+
+#compass, #logo {
 	width: 100px;
 	height: 100px;
+}
+
+.loginInput, label {
+	margin: 20px;
+}
+
+.formSubmit {
+	margin-top: 10px;
 }
 
 /* CSS for the banner ad */
@@ -65,7 +99,7 @@
 	max-height: 30%;
 }
 
-#bannerAdText {
+#bannerAdText, #errorMessage {
 	text-align: center;
 	margin-bottom: 30px;
 }

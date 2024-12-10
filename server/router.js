@@ -21,7 +21,7 @@ const router = (app) => {
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
 
-  app.get('/map', /*mid.requiresLogin,*/ controllers.Map.mapPage);
+  app.get('/map', mid.requiresLogin, controllers.Map.mapPage);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 
