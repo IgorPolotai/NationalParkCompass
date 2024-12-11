@@ -1,6 +1,11 @@
 const models = require('../models');
 
-const { Account } = models;
+const geojson = require('./parks.json');
+
+const { features } = geojson;
+const parkNames = features.map((feature) => feature.properties.title);
+
+const { Account, ParkTrip } = models;
 
 const loginPage = (req, res) => res.render('login');
 
@@ -53,8 +58,8 @@ const changePassword = (req, res) => {
       // Update the password in the database
       const updatedAccount = await Account.findOneAndUpdate(
         { username },
-        { password: hashedNewPass },  // Ensure hashed password is passed here
-        { new: true } // This ensures we get the updated document back
+        { password: hashedNewPass }, // Ensure hashed password is passed here
+        { new: true }, // This ensures we get the updated document back
       );
 
       // Check if the update was successful
@@ -91,6 +96,38 @@ const signup = async (req, res) => {
     const newAccount = new Account({ username, password: hash });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
+
+    // Now we generate a ParkTrip for each national park
+    // So that all we have to do is update them
+    // eslint-disable-next-line no-restricted-syntax
+    // console.log(`Park Trip: ${parkNames}`);
+
+    for (let i = 0; i < parkNames.length; i++) {
+      const parkName = parkNames[i];
+
+      // Ensure the parkName is valid
+      if (!parkName || typeof parkName !== 'string' || parkName.trim() === '') {
+        console.error(`Invalid park name at index ${i}:`, parkName);
+        return res.status(400).json({ error: `Invalid park name at index ${i}.` });
+      }
+
+      const parkTripData = {
+        parkName,
+        tripDiary: {
+          diaryEntries: [],
+        },
+        owner: req.session.account._id,
+      };
+
+      try {
+        const newParkTrip = new ParkTrip(parkTripData);
+        await newParkTrip.save();
+      } catch (err) {
+        console.error('Error creating park trip:', err);
+        return res.status(400).json({ error: 'An error occurred creating parks for this account!' });
+      }
+    }
+
     return res.json({ redirect: '/map' });
   } catch (err) {
     console.log(err);

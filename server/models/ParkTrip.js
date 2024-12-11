@@ -1,6 +1,16 @@
 /* eslint-disable linebreak-style */
 const mongoose = require('mongoose');
-const FileModel = require('./Filestore.js');
+// const FileModel = require('./Filestore.js');
+
+// digitalStamp: {
+//   visitedDate: {
+//     type: Date,
+//   },
+//   image: {
+//     type: String,
+//     ref: FileModel,
+//   },
+// },
 
 const ParkTripSchema = new mongoose.Schema({
   owner: {
@@ -10,17 +20,8 @@ const ParkTripSchema = new mongoose.Schema({
   },
   parkName: {
     type: String,
-    required: true,
+    required: [true, 'Park name is required'],
     trim: true,
-  },
-  digitalStamp: {
-    visitedDate: {
-      type: Date,
-    },
-    image: {
-      type: String,
-      ref: FileModel,
-    },
   },
   tripDiary: {
     diaryEntries: {
@@ -35,8 +36,8 @@ const ParkTripSchema = new mongoose.Schema({
 
 ParkTripSchema.statics.toAPI = (doc) => ({
   parkName: doc.parkName,
-  digitalStampImage: doc.digitalStamp.image,
-  digitalStampDate: doc.digitalStamp.visitedDate,
+  // digitalStampImage: doc.digitalStamp.image,
+  // digitalStampDate: doc.digitalStamp.visitedDate,
   tripDiaryEntries: doc.tripDiary.diaryEntries,
 });
 

@@ -419,7 +419,7 @@ const DataForm = (props) => {
                             />
                         </div>
 
-                        <div>
+                        <div id='textContainer'>
                             <label htmlFor="tripDiary">Trip Diary Entry:</label>
                             <textarea
                                 id="tripDiary"
@@ -445,7 +445,8 @@ const DataForm = (props) => {
 
 
 const App = () => {
-    const [noParkSelected, setParkSelected] = useState(true);
+    // const [noParkSelected, setParkSelected] = useState(true);
+    const [reloadDiary, setReloadDiary] = useState(false);
 
     useEffect(() => {
         const createMap = async () => {
@@ -468,7 +469,7 @@ const App = () => {
                 <DigitalStamp />
             </div> */}
             <div id="tripDiaryDiv">
-                <TripDiary />
+                <TripDiary diary={[]} reloadDiary={reloadDiary}/>
             </div>
 		</div>
 	</div>
@@ -478,7 +479,7 @@ const App = () => {
         </div> */}
 
         <div id="dataFormDiv">
-                <DataForm />
+                <DataForm triggerReload={() => setReloadDiary(!reloadDiary)}/>
         </div>
 
         {/* <div>
