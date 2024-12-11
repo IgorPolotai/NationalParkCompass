@@ -191,8 +191,6 @@ const updateButtons = (id) => {
 const showFeatureDetails = (id) => {
   // console.log(`showFeatureDetails - id=${id}`);
 
-  updateParkName(document.getElementById('details-1').textContent);
-
   const feature = getFeatureById(id);
   document.querySelector('#details-1').innerHTML = `${feature.properties.title}`;
   document.querySelector('#details-2').innerHTML =		`<b>Address: </b>${feature.properties.address}<br>
@@ -203,8 +201,7 @@ const showFeatureDetails = (id) => {
 
   currentId = id;
 
-  const event = new CustomEvent('parkSelected', { detail: { selected: false } });
-  window.dispatchEvent(event);
+  updateParkName(document.getElementById('details-1').textContent);
 
   updateButtons(currentId);
 };
