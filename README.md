@@ -7,3 +7,5 @@ This is a project where I try to create a digital diary and interface for people
 I use the Mapbox API for displaying a map and the locations of these national parks, React for the frontend, ExpressJS for the backend, Redis for saving session info, and MongoDB & Mongoose to save user data.
 
 You can create user accounts, change your password, and save a list of your favorite National Parks!
+
+Try it out here: https://iap1570-nationalparkcompass-589f33389015.herokuapp.com/
