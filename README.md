@@ -9,3 +9,7 @@ I use the Mapbox API for displaying a map and the locations of these national pa
 You can create user accounts, change your password, and save a list of your favorite National Parks!
 
 Try it out here: https://iap1570-nationalparkcompass-589f33389015.herokuapp.com/
+
+UPDATE 3/2/25: It looks like the app is down. 
+If you are facing issues accessing the website, a more simplified version of the website (without databases and React) can be found here:
+https://people.rit.edu/iap1570/430/NationalParkCompass/
